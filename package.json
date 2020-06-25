@@ -1,0 +1,58 @@
+{
+  "name": "chikuwaa.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build:html": "ejs-cli --base-dir _src/ejs/ \"/**/*.ejs\" --out _dist/ --options _src/ejs/options.json",
+    "watch:html": "chokidar \"_src/ejs/\" -c \"npm run build:html\" --initial",
+    "watch:inc": "chokidar \"_src/_inc/\" -c \"npm run build:html\" --initial",
+    "build:prefix": "postcss _dist/css/style.css -u autoprefixer -o _dist/css/style.css",
+    "build:css": "node-sass _src/sass/style.scss --importer node_modules/node-sass-globbing/index.js _dist/css/style.css --output-style expanded --source-map _dist/css/",
+    "build:css+prefix": "run-s build:css build:prefix",
+    "watch:css+prefix": "chokidar \"_src/sass/\" --command \"npm run build:css+prefix\" --initial",
+    "copy:js": "cpx \"_src/js/*.js\" _dist/js/",
+    "build:babel": "./node_modules/.bin/babel _src/js/ --out-dir _dist/js/ --ignore '_src/js/**/*.min.js'",
+    "watch:babel": "chokidar \"_src/js/\" -c \"npm run build:babel\" --initial",
+    "imagemin:build": "node imagemin.js",
+    "watch:img": "chokidar \"_src/images/**/*\" --command \"node imagemin.js\" --initial",
+    "start:server": "browser-sync start -s _dist -w _dist/*.html _dist/css/*.css _dist/js/*.js",
+    "copy:all": "cpx \"_dist/**/*\" ./",
+    "watch:all": "run-p watch:html watch:inc watch:css+prefix watch:babel watch:img start:server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chikuwaa/chikuwaa.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chikuwaa/chikuwaa.github.io/issues"
+  },
+  "homepage": "https://github.com/chikuwaa/chikuwaa.github.io#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "autoprefixer": "^9.7.6",
+    "browser-sync": "^2.26.7",
+    "chokidar-cli": "^2.1.0",
+    "cpx": "^1.5.0",
+    "ejs-cli": "^2.1.1",
+    "imagemin-cli": "^5.1.0",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-keep-folder": "^5.3.2",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-svgo": "^7.1.0",
+    "node-sass": "^4.13.1",
+    "node-sass-globbing": "0.0.23",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.0"
+  },
+  "dependencies": {
+    "optimist": "^0.6.1",
+    "smoothscroll-polyfill": "^0.4.4"
+  }
+}
