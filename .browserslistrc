@@ -1,1 +1,5 @@
-defaults
+# Browsers that we support
+
+last 2 version
+> 1%
+IE 11

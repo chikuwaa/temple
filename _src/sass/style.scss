@@ -1,5 +1,6 @@
 @charset "UTF-8";
-@import "common";
+@use "sass:math";
+@import "_var";
 .pc{
     @include pc{
         display: none;
@@ -20,7 +21,7 @@ html
 body{
     font-family: $font;
     // @include f(19);
-    @include lh(19,31)
+    @include lh(19,31);
     letter-spacing: .1em;
     background-color: $key01;
     color: $key02;
@@ -68,10 +69,10 @@ body{
             transition: all ease 0ms 1000ms;
 
             @include pc{
-                @include wpm(1024,283)
+                @include wpm(1024,283);
             }
             @include sp{
-                @include wpm(360,175)
+                @include wpm(360,175);
                 @include mb(35);
             }
             h1{
@@ -86,7 +87,7 @@ body{
                 @include f(50);
                 font-weight: 100;
                 @include sp{
-                    @include f(36)
+                    @include f(36);
                 }
             }
         }
@@ -264,16 +265,16 @@ header{
         }
         li:nth-child(1){
             @include f(42);
-            @include mb(5)
+            @include mb(5);
             @include pc{
-                @include f(35)
+                @include f(35);
                 bottom: 0px;
             }
         }
         li:nth-child(2){
             @include f(45);
             @include pc{
-                @include f(34)
+                @include f(34);
                 bottom:0px;
             }
 
@@ -415,13 +416,13 @@ footer{
     }
     .light{
         @include ma;
-        @include wpm(1920,129)
+        @include wpm(1920,129);
         @include pc{
-            @include wpm(1024,129)
+            @include wpm(1024,129);
             
         }
         @include sp{
-            @include wpm(360,80)
+            @include wpm(360,80);
             
         }
         h1{
@@ -447,7 +448,7 @@ footer{
         }
 
         i{
-            @include f(29)
+            @include f(29);
             @include sp{
                 @include f(18);
             }
