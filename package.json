@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
+  "type": "module",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -16,13 +17,12 @@
     "gulp-ejs": "^5.1.0",
     "gulp-html-beautify": "^1.0.1",
     "gulp-imagemin": "^8.0.0",
-    "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^9.0.2",
-    "plumber": "^0.4.8",
+    "postcss": "^8.4.12",
     "postcss-gap-properties": "^3.0.3",
     "sass": "^1.49.9"
   },
